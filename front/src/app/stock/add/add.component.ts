@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add',
@@ -15,11 +16,14 @@ export class AddComponent implements OnInit {
     price: new FormControl(2.5, [Validators.required, Validators.min(0)]),
     qty: new FormControl(1, [Validators.required]),
   });
-  constructor() {}
+
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {}
 
   submit() {
     console.log('submitting...');
+
+    this.router.navigate(['..'], { relativeTo: this.route });
   }
 }

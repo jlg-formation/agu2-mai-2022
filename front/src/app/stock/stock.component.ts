@@ -17,11 +17,22 @@ export class StockComponent implements OnInit {
   faPlus = faPlus;
   faTrashCan = faTrashCan;
 
+  selectedArticles = new Set<Article>();
+
   constructor(public articleService: ArticleService) {}
 
   ngOnInit(): void {}
 
   async refresh() {
     await this.articleService.refresh();
+  }
+
+  toggle(a: Article) {
+    console.log('a: ', a);
+    if (this.selectedArticles.has(a)) {
+      this.selectedArticles.delete(a);
+      return;
+    }
+    this.selectedArticles.add(a);
   }
 }

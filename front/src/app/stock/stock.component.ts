@@ -19,13 +19,24 @@ export class StockComponent implements OnInit {
 
   selectedArticles = new Set<Article>();
 
-  constructor(public articleService: ArticleService) {}
+  isRefreshing = false;
+
+  constructor(public articleService: ArticleService) {
+    this.refresh();
+  }
 
   ngOnInit(): void {}
 
   async refresh() {
-    await this.articleService.refresh();
-    this.selectedArticles.clear();
+    try {
+      this.isRefreshing = true;
+      await this.articleService.refresh();
+      this.selectedArticles.clear();
+    } catch (err) {
+      console.log('err: ', err);
+    } finally {
+      this.isRefreshing = false;
+    }
   }
 
   toggle(a: Article): void {

@@ -1,6 +1,23 @@
 import { Router } from "express";
+import { Article } from "./interfaces/article";
 
-const articles = [];
+const articles: Article[] = [
+  {
+    name: "Pelle",
+    price: 2.99,
+    qty: 100,
+  },
+  {
+    name: "Faucille",
+    price: 5.45,
+    qty: 50,
+  },
+  {
+    name: "Perceuse",
+    price: 25,
+    qty: 15,
+  },
+];
 
 const app = Router();
 

@@ -19,23 +19,7 @@ export class ArticleService {
   getArticles(): Article[] {
     const str = localStorage.getItem(ARTICLE_KEY);
     if (str === null) {
-      return [
-        {
-          name: 'Marteau',
-          price: 2.99,
-          qty: 100,
-        },
-        {
-          name: 'Faucille',
-          price: 5.45,
-          qty: 50,
-        },
-        {
-          name: 'Perceuse',
-          price: 25,
-          qty: 15,
-        },
-      ];
+      return [];
     }
     return JSON.parse(str);
   }

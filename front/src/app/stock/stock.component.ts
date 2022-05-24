@@ -36,4 +36,8 @@ export class StockComponent implements OnInit {
     }
     this.selectedArticles.add(a);
   }
+
+  async remove() {
+    console.log('remove');
+  }
 }

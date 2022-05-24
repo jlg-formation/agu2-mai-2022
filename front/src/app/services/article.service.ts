@@ -44,6 +44,11 @@ export class ArticleService {
     this.articles = this.getArticles();
   }
 
+  async remove(selectedArticles: Set<Article>) {
+    this.articles = this.articles.filter((a) => !selectedArticles.has(a));
+    this.save();
+  }
+
   save() {
     localStorage.setItem(ARTICLE_KEY, JSON.stringify(this.articles));
   }

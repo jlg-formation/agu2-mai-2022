@@ -20,3 +20,12 @@ export const articles: Article[] = [
     qty: 15,
   },
 ];
+
+export const a1: Article = {
+  name: 'Cheville',
+  price: 5.45,
+  qty: 50,
+};
+
+export const sleep = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));

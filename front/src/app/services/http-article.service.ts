@@ -17,7 +17,7 @@ export class HttpArticleService extends ArticleService {
 
   override async refresh() {
     const articles = await lastValueFrom(
-      this.http.get<Article[]>(ARTICLES_URL).pipe(delay(1000))
+      this.http.get<Article[]>(ARTICLES_URL).pipe(delay(10))
     );
 
     console.log('articles: ', articles);
@@ -28,7 +28,7 @@ export class HttpArticleService extends ArticleService {
   override async add(article: Article): Promise<void> {
     await super.add(article);
     await lastValueFrom(
-      this.http.post<void>(ARTICLES_URL, article).pipe(delay(1000))
+      this.http.post<void>(ARTICLES_URL, article).pipe(delay(10))
     );
   }
 
@@ -43,7 +43,7 @@ export class HttpArticleService extends ArticleService {
           },
           body: JSON.stringify(ids),
         })
-        .pipe(delay(1000))
+        .pipe(delay(10))
     );
   }
 }

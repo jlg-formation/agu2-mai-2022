@@ -27,5 +27,12 @@ export const a1: Article = {
   qty: 50,
 };
 
+export const a2: Article = {
+  id: '345',
+  name: 'Debroussailleuse',
+  price: 5.45,
+  qty: 50,
+};
+
 export const sleep = (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms));

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  url: 'https://maboite.com',
+  url: 'https://maboite-recette.com',
 };

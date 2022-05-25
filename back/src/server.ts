@@ -6,11 +6,7 @@ import { api } from "./api";
 const app = express();
 const port = 3000;
 
-app.use(
-  cors({
-    origin: "http://localhost:4200",
-  })
-);
+app.use(cors());
 
 app.use((req, res, next) => {
   console.log("req: ", req.url);

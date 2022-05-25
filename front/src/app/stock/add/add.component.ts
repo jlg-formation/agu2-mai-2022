@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { Article } from 'src/app/interfaces/article';
 import { ArticleService } from 'src/app/services/article.service';
 
@@ -12,6 +12,7 @@ import { ArticleService } from 'src/app/services/article.service';
 })
 export class AddComponent implements OnInit {
   faPlus = faPlus;
+  faSpinner = faSpinner;
   f = new FormGroup({
     name: new FormControl('Tournevis', [
       Validators.required,
@@ -20,6 +21,8 @@ export class AddComponent implements OnInit {
     price: new FormControl(2.5, [Validators.required, Validators.min(0)]),
     qty: new FormControl(1, [Validators.required]),
   });
+
+  isAdding = false;
 
   constructor(
     private router: Router,
@@ -31,8 +34,15 @@ export class AddComponent implements OnInit {
 
   async submit() {
     console.log('submitting...');
-    const article = this.f.value as Article;
-    await this.articleService.add(article);
-    this.router.navigate(['..'], { relativeTo: this.route });
+    try {
+      this.isAdding = true;
+      const article = this.f.value as Article;
+      await this.articleService.add(article);
+      this.router.navigate(['..'], { relativeTo: this.route });
+    } catch (err) {
+      console.log('err: ', err);
+    } finally {
+      this.isAdding = false;
+    }
   }
 }

@@ -27,10 +27,4 @@ describe('AutofocusDirective', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(document.activeElement).toBe(compiled.querySelector('input'));
   });
-
-  it('should autofocus', () => {
-    const fixture = TestBed.createComponent(Test2Component);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLInputElement;
-  });
 });
